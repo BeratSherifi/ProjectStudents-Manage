@@ -1,0 +1,47 @@
+﻿@model ProjectStudentsManage.Models.TBLClassRoom
+
+@{
+    ViewBag.Title = "InsertTBLClassRoom";
+    Layout = "~/Views/Layout/UsingLayout.cshtml";
+    var datenow = DateTime.Now;
+}
+
+<br />
+<h2 style="margin-left:13px">Create Class</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="margin-left:17px">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NameCr, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NameCr, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NameCr, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="display:none">
+            @Html.LabelFor(model => model.CreateDateCr, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" value="@datenow" name="CreateDateCr" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="margin-left:13px" >
+    @Html.ActionLink("Back to Main", "Index")
+</div>

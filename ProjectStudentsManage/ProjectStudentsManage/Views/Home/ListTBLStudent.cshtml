@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ProjectStudentsManage.Models.TBLStudent>
+
+@{
+    ViewBag.Title = "ListTBLStudent";
+    Layout = "~/Views/Layout/UsingLayout.cshtml";
+}
+<br />
+<h2 style="margin-left:13px">List of Students</h2>
+<br />
+
+<div style="margin-left:17px">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthdatSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDateSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCr)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdSt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameSt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthdatSt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressSt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDateSt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCr)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdSt }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdSt }) |
+                    @Html.ActionLink("Delete", "DeleteTBLStudent", new { id = item.IdSt })
+                </td>
+            </tr>
+        }
+
+
+    </table>
+</div>
+
+<div style="margin-left:13px">
+    @Html.ActionLink("Back", "PrinfTBLClassRoom")
+</div>

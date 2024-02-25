@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBStudentManageModel2StoreContainer" CdmEntityContainer="DBStudentManageEntities2">
+    <EntitySetMapping Name="TBLClassRooms">
+      <EntityTypeMapping TypeName="DBStudentManageModel2.TBLClassRoom">
+        <MappingFragment StoreEntitySet="TBLClassRoom">
+          <ScalarProperty Name="IdCr" ColumnName="IdCr" />
+          <ScalarProperty Name="NameCr" ColumnName="NameCr" />
+          <ScalarProperty Name="CreateDateCr" ColumnName="CreateDateCr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLStudents">
+      <EntityTypeMapping TypeName="DBStudentManageModel2.TBLStudent">
+        <MappingFragment StoreEntitySet="TBLStudent">
+          <ScalarProperty Name="IdSt" ColumnName="IdSt" />
+          <ScalarProperty Name="NameSt" ColumnName="NameSt" />
+          <ScalarProperty Name="BirthdatSt" ColumnName="BirthdatSt" />
+          <ScalarProperty Name="AddressSt" ColumnName="AddressSt" />
+          <ScalarProperty Name="CreateDateSt" ColumnName="CreateDateSt" />
+          <ScalarProperty Name="IdCr" ColumnName="IdCr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="DBStudentManageModel2.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

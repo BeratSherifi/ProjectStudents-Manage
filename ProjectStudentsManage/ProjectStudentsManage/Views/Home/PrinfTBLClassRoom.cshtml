@@ -1,0 +1,32 @@
+﻿@using ProjectStudentsManage.Models;
+
+
+@{
+    ViewBag.Title = "PrintTBLClassRoom";
+    Layout = "~/Views/Layout/UsingLayout.cshtml";
+}
+
+@model List<TBLClassRoom>
+
+@*@Html.ActionLink("Show all", "ShowAllTBLStudent", null, htmlAttributes: new { @class = "btn btn-primary mr-2", @type = "button" })
+    @Html.ActionLink("Order By ASC", "OrderByAscId", null, htmlAttributes: new { @class = "btn btn-primary mr-2", @type = "button" })
+    @Html.ActionLink("Order By DSC", "OrderByDscId", null, htmlAttributes: new { @class = "btn btn-primary mr-2", @type = "button" })*@
+
+<br />
+<h2 style="margin-left:13px">All Classes</h2>
+<br />
+
+@foreach (var item in Model)
+{
+<div style="margin-left:17px">
+    <p>Name Class: @item.NameCr</p>
+    @Html.ActionLink("Delete", "DeleteTBLClassRoom", new { id = item.IdCr }, htmlAttributes: new { @class = "btn btn-primary mr-2", @type = "button" })
+    @Html.ActionLink("Add Student", "AddTblStudent", new { id = item.IdCr }, htmlAttributes: new { @class = "btn btn-primary mr-2", @type = "button" })
+    @Html.ActionLink("Students", "ListTBLStudent", new { id = item.IdCr }, htmlAttributes: new { @class = "btn btn-primary", @type = "button" })
+    <hr />
+</div>
+}
+
+<div style="margin-left:13px">
+    @Html.ActionLink("Back to Main", "Index")
+</div>

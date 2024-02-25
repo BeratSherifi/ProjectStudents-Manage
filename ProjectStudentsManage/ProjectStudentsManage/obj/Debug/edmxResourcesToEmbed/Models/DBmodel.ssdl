@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBStudentManageModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TBLClassRoom">
+    <Key>
+      <PropertyRef Name="IdCr" />
+    </Key>
+    <Property Name="IdCr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameCr" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreateDateCr" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TBLStudent">
+    <Key>
+      <PropertyRef Name="IdSt" />
+    </Key>
+    <Property Name="IdSt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameSt" Type="nvarchar" MaxLength="255" />
+    <Property Name="BirthdatSt" Type="date" />
+    <Property Name="AddressSt" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CreateDateSt" Type="datetime" />
+    <Property Name="IdCr" Type="int" />
+  </EntityType>
+  <Association Name="FK__TBLStudent__IdCr__267ABA7A">
+    <End Role="TBLClassRoom" Type="Self.TBLClassRoom" Multiplicity="0..1" />
+    <End Role="TBLStudent" Type="Self.TBLStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLClassRoom">
+        <PropertyRef Name="IdCr" />
+      </Principal>
+      <Dependent Role="TBLStudent">
+        <PropertyRef Name="IdCr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBStudentManageModelStoreContainer">
+    <EntitySet Name="TBLClassRoom" EntityType="Self.TBLClassRoom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLStudent" EntityType="Self.TBLStudent" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__TBLStudent__IdCr__267ABA7A" Association="Self.FK__TBLStudent__IdCr__267ABA7A">
+      <End Role="TBLClassRoom" EntitySet="TBLClassRoom" />
+      <End Role="TBLStudent" EntitySet="TBLStudent" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

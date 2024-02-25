@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBStudentManageModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBLClassRoom">
+          <Key>
+            <PropertyRef Name="IdCr" />
+          </Key>
+          <Property Name="IdCr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCr" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateDateCr" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TBLStudent">
+          <Key>
+            <PropertyRef Name="IdSt" />
+          </Key>
+          <Property Name="IdSt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameSt" Type="nvarchar" MaxLength="255" />
+          <Property Name="BirthdatSt" Type="date" />
+          <Property Name="AddressSt" Type="nvarchar" MaxLength="2000" />
+          <Property Name="CreateDateSt" Type="datetime" />
+          <Property Name="IdCr" Type="int" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__TBLStudent__IdCr__267ABA7A">
+          <End Role="TBLClassRoom" Type="Self.TBLClassRoom" Multiplicity="0..1" />
+          <End Role="TBLStudent" Type="Self.TBLStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLClassRoom">
+              <PropertyRef Name="IdCr" />
+            </Principal>
+            <Dependent Role="TBLStudent">
+              <PropertyRef Name="IdCr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBStudentManageModel1StoreContainer">
+          <EntitySet Name="TBLClassRoom" EntityType="Self.TBLClassRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLStudent" EntityType="Self.TBLStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TBLStudent__IdCr__267ABA7A" Association="Self.FK__TBLStudent__IdCr__267ABA7A">
+            <End Role="TBLClassRoom" EntitySet="TBLClassRoom" />
+            <End Role="TBLStudent" EntitySet="TBLStudent" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBStudentManageModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBLClassRoom">
+          <Key>
+            <PropertyRef Name="IdCr" />
+          </Key>
+          <Property Name="IdCr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDateCr" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TBLStudents" Relationship="Self.FK__TBLStudent__IdCr__267ABA7A" FromRole="TBLClassRoom" ToRole="TBLStudent" />
+        </EntityType>
+        <EntityType Name="TBLStudent">
+          <Key>
+            <PropertyRef Name="IdSt" />
+          </Key>
+          <Property Name="IdSt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameSt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BirthdatSt" Type="DateTime" Precision="0" />
+          <Property Name="AddressSt" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDateSt" Type="DateTime" Precision="3" />
+          <Property Name="IdCr" Type="Int32" />
+          <NavigationProperty Name="TBLClassRoom" Relationship="Self.FK__TBLStudent__IdCr__267ABA7A" FromRole="TBLStudent" ToRole="TBLClassRoom" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__TBLStudent__IdCr__267ABA7A">
+          <End Role="TBLClassRoom" Type="Self.TBLClassRoom" Multiplicity="0..1" />
+          <End Role="TBLStudent" Type="Self.TBLStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLClassRoom">
+              <PropertyRef Name="IdCr" />
+            </Principal>
+            <Dependent Role="TBLStudent">
+              <PropertyRef Name="IdCr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBStudentManageEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBLClassRooms" EntityType="Self.TBLClassRoom" />
+          <EntitySet Name="TBLStudents" EntityType="Self.TBLStudent" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK__TBLStudent__IdCr__267ABA7A" Association="Self.FK__TBLStudent__IdCr__267ABA7A">
+            <End Role="TBLClassRoom" EntitySet="TBLClassRooms" />
+            <End Role="TBLStudent" EntitySet="TBLStudents" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBStudentManageModel1StoreContainer" CdmEntityContainer="DBStudentManageEntities1">
+          <EntitySetMapping Name="TBLClassRooms">
+            <EntityTypeMapping TypeName="DBStudentManageModel1.TBLClassRoom">
+              <MappingFragment StoreEntitySet="TBLClassRoom">
+                <ScalarProperty Name="IdCr" ColumnName="IdCr" />
+                <ScalarProperty Name="NameCr" ColumnName="NameCr" />
+                <ScalarProperty Name="CreateDateCr" ColumnName="CreateDateCr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLStudents">
+            <EntityTypeMapping TypeName="DBStudentManageModel1.TBLStudent">
+              <MappingFragment StoreEntitySet="TBLStudent">
+                <ScalarProperty Name="IdSt" ColumnName="IdSt" />
+                <ScalarProperty Name="NameSt" ColumnName="NameSt" />
+                <ScalarProperty Name="BirthdatSt" ColumnName="BirthdatSt" />
+                <ScalarProperty Name="AddressSt" ColumnName="AddressSt" />
+                <ScalarProperty Name="CreateDateSt" ColumnName="CreateDateSt" />
+                <ScalarProperty Name="IdCr" ColumnName="IdCr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="DBStudentManageModel1.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

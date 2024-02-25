@@ -1,0 +1,58 @@
+﻿@model ProjectStudentsManage.Models.TBLStudent
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Layout/UsingLayout.cshtml";
+}
+<br />
+<h2 style="margin-left:13px">Details</h2>
+<br />
+<div style="margin-left:17px">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameSt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameSt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthdatSt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthdatSt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressSt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressSt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDateSt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDateSt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBLClassRoom.NameCr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBLClassRoom.NameCr)
+        </dd>
+
+    </dl>
+</div>
+
+<div style="margin-left:13px">
+    @Html.ActionLink("Back to Main", "Index")
+</div>

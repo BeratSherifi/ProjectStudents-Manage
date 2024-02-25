@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Layout/UsingLayout.cshtml";
+
+}
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">SMS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ">
+            @Html.ActionLink("Home", "Index", null, htmlAttributes: new { @class = "btn btn-primary" })
+            @Html.ActionLink("Create Class", "InsertTBLClassRoom", null, htmlAttributes: new { @class = "btn btn-primary" })
+            @Html.ActionLink("List of Classes", "PrinfTBLClassRoom", null, htmlAttributes: new { @class = "btn btn-primary" })
+            @Html.ActionLink("Show All Students", "ShowAllTBLStudent", null, htmlAttributes: new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</nav>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-9"></div>
+        <div class="col-4">
+            <br />
+
+            <h1>Our Services</h1>
+            <strong>*</strong> You can add classes by clicking the Create Class button above.<br />
+            <strong>*</strong> You can see all registered classes.<br />
+            <strong>*</strong> You can add students to any class you want.<br />
+            <strong>*</strong> You can see all registered students, and you can sort them according to the registered date (Ascending & Descending)<br />
+            <strong>*</strong> You can edit the given information, you can also delete it.<br />
+        </div>
+        <div class="col-6"><br><img src="~/Images/imgg.jpg" class="rounded " alt="..."></div>
+    </div>
+</div>
